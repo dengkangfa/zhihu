@@ -2,11 +2,12 @@
 
 namespace Tests\Unit;
 
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class ExampleTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * A basic test example.
@@ -15,6 +16,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $user = new User;
+        $user->name = 'dkf';
+        $user->save();
+
+        $this->assertEquals('dkf',$user->name);
     }
 }

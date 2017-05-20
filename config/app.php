@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('LOCALE') ?: 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -167,6 +167,9 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Naux\Mail\SendCloudServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
          * Application Service Providers...
