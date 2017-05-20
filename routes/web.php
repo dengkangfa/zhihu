@@ -20,3 +20,10 @@ Route::get('email/verify/{token}', ['as' => 'email.verify', 'uses' => 'EmailCont
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('questions', 'QuestionController', [
+    'names' => [
+        'create' => 'question.create',
+        'show' => 'question.show'
+    ]
+]);
