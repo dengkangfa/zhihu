@@ -4,6 +4,7 @@ namespace App;
 
 use Mail;
 use Naux\Mail\sendCloudTemplate;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -28,6 +29,41 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    /**
+     * 判断该模型对应的内容是否是该用户发表的
+     * @param  Model  $model
+     * @return boolean
+     */
+    public function owns(Model $model)
+    {
+        return $this->id == $model->user_id;
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(Question::class, 'user_question')->withTimestamps();
+    }
+
+    public function followThis($question)
+    {
+        return $this->follows()->toggle($question);
+    }
+
+    /**
+     * 判断用户是否已关注
+     * @param  int $question 问题
+     * @return int
+     */
+    public function followed($question)
+    {
+        return $this->follows()->where('question_id', $question)->count();
+    }
 
     public function sendPasswordResetNotification($token)
     {
