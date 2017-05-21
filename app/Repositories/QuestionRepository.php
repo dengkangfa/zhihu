@@ -20,11 +20,6 @@ class QuestionRepository extends BaseRepository
         return $this->model::where('id', $id)->with(['topics', 'answers'])->first();
     }
 
-    public function byId($id)
-    {
-        return $this->model::find($id);
-    }
-
     public function getQuestionsFeed()
     {
         return $this->model::published()

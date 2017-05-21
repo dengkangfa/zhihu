@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'confirmation_token'
+        'name', 'email', 'password', 'avatar', 'confirmation_token', 'api_token'
     ];
 
     /**
@@ -63,6 +63,26 @@ class User extends Authenticatable
     public function followed($question)
     {
         return $this->follows()->where('question_id', $question)->count();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(self::class,'followers','follower_id','followed_id')->withTimestamps();
+    }
+
+    public function followersUser()
+    {
+        return $this->belongsToMany(self::class,'followers','followed_id','follower_id')->withTimestamps();
+    }
+
+    /**
+     * 关注用户
+     * @param  int  $user 被关注者id
+     * @return boolean
+     */
+    public function followThisUser($user)
+    {
+        return $this->followers()->toggle($user);
     }
 
     public function sendPasswordResetNotification($token)

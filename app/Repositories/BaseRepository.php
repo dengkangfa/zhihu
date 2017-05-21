@@ -8,4 +8,9 @@ class BaseRepository
     {
         return $this->model::create($data);
     }
+
+    public function byId($id)
+    {
+        return $this->model::find($id);
+    }
 }
