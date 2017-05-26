@@ -25,7 +25,8 @@ Route::resource('questions', 'QuestionController', [
         'show' => 'question.show'
     ]
 ]);
-
 Route::post('questions/{question}/answer', 'AnswersController@store');
 
 Route::get('question/{question}/follow', 'QuestionFollowController@follow');
+
+Route::get('notifications', 'NotificationController@index');

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-class BaseRepository
+trait BaseRepository
 {
     public function create(array $data)
     {

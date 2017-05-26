@@ -2,17 +2,24 @@
 
 namespace App\Repositories;
 
+
+
 use App\Question;
 use App\Topic;
 
-class QuestionRepository extends BaseRepository
+class QuestionRepository
 {
+    use BaseRepository;
 
+    /**
+     * @var Question
+     */
     protected $model;
 
-    public function __construct(Question $model)
+
+    public function __construct(Question $question)
     {
-        $this->model = $model;
+        $this->model = $question;
     }
 
     public function byIdWithTopicsAndAnswers($id)
@@ -44,5 +51,12 @@ class QuestionRepository extends BaseRepository
             $topic = Topic::create(['name' => $topic, 'question_count' => 1]);
             return $topic->id;
         })->toArray();
+    }
+
+    public function getQuestionCommentsById($id)
+    {
+        $question = Question::with('comments', 'comments.user')->where('id', $id)->first();
+
+        return $question->comments;
     }
 }

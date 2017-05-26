@@ -27682,7 +27682,7 @@ UE.ui = baidu.editor.ui = {};
         'snapscreen':'~/dialogs/snapscreen/snapscreen.html',
         'scrawl':'~/dialogs/scrawl/scrawl.html',
         'music':'~/dialogs/music/music.html',
-        'template':'~/dialogs/template/template.html',
+        'template':'~/dialogs/Template/Template.html',
         'background':'~/dialogs/background/background.html',
         'charts': '~/dialogs/charts/charts.html'
     };

@@ -35,4 +35,9 @@ class Question extends Model
         return $query->where('is_hidden', 'F');
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
 }

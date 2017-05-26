@@ -4,8 +4,10 @@ namespace App\Repositories;
 
 use App\User;
 
-class UserRepository extends BaseRepository
+class UserRepository
 {
+    use BaseRepository;
+
     protected $model;
 
     public function __construct(User $model)
