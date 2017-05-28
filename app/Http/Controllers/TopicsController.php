@@ -10,18 +10,18 @@ class TopicsController extends Controller
     /**
      * @var
      */
-    private $model;
+    private $topic;
 
     /**
      * TopicsController constructor.
      */
     public function __construct(TopicRepository $topic)
     {
-        $this->model = $topic;
+        $this->topic = $topic;
     }
 
     public function index(Request $request)
     {
-        return $this->model->getTopicsForTagging($request);
+        return $this->topic->getTopicsForTagging($request);
     }
 }

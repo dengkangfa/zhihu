@@ -63,6 +63,14 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'qiniu' => [
+            'driver'     => 'qiniu',
+            'access_key' => env('QINIU_ACCESS_KEY', 'xxxxxx'),
+            'secret_key' => env('QINIU_SECRET_KEY', 'xxxxxx'),
+            'bucket'     => env('QINIU_BUCKET', 'zhihu'),
+            'domain'     => env('QINIU_DOMAIN', 'oqmaujekp.bkt.clouddn.com'), // or host: https://xxxx.clouddn.com
+        ],
+
     ],
 
 ];

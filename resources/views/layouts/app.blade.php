@@ -15,6 +15,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>;
         @if(Auth::check())
             window.Zhihu = {
                 name: "{{Auth::user()->name}}",

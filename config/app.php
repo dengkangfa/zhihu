@@ -171,6 +171,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
 
         /*
          * Application Service Providers...
